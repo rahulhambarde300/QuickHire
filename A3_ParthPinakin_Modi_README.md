@@ -10,10 +10,12 @@
 
 #### URLs:
 
-_To test the functionality, please use the following account credentials:_
+_For ease of testing the functionality, please use the following account credentials:_
 
-- **Username:** pmodi1080
-- **Password:** Test@98
+- **Username:** pmodi5000
+- **Password:** Test@123
+
+- You can navigate to Checkout page from the Profile icon dropdown in Navbar once you are logged in.
 
 **Main Website URL:** [https://quick-hire.netlify.app/](https://quick-hire.netlify.app/)
 
