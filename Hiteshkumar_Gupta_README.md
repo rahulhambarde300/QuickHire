@@ -33,7 +33,7 @@ When user clicked on anyone of the categories, those categories's sub-categories
 If user selcts on anyone for the sub-category card, user will be redirected to service page. Here, user will able to see all services as cards. If user selects anyone card, he will be redirected to individual listing service page.
 
 #### Code Structure and Files
-Frontend:
+**Frontend:**
 
 Here, for displaying categories in Header, I have use flex property of css. For this I have created Header component.
 
@@ -45,68 +45,68 @@ Here, in each components, there is .js file written using react and .css file wi
 
 **Code Description**
 
-**Header.js**
+1.  **src\CommonComponents\Header\Header.js**
 
-- This file implements the header section of the application.
-- It utilizes CSS flex properties for layout management to display categories.
-- The component is designed to be reusable and can be included in various parts of the application to consistently display categories in the header.
+    - This file implements the header section of the application.
+    - It utilizes CSS flex properties for layout management to display categories.
+    - The component is designed to be reusable and can be included in various parts of the application to consistently display categories in the header.
 
-**SubCategoryCard.js**
+2. **src\Features\SubCategoryCard\SubCategoryCard.js**
 
-- This file defines a card layout for displaying sub-categories.
-- It uses Material UI components for styling and layout.
-- The card layout is customized to suit the project's requirements, displaying sub-category titles and associated services.
+    - This file defines a card layout for displaying sub-categories.
+    - It uses Material UI components for styling and layout.
+    - The card layout is customized to suit the project's requirements, displaying sub-category titles and associated services.
 
-**SubCategoryService.js**
+3. **src\Features\SubCategoryService\SubCategoryService.js**
 
-- This file manages the display of services under a specific sub-category.
-- It fetches data from the backend using GET APIs and renders services as cards.
-- Users can filter services by rating, budget, and popularity using this component.
-- Pagination functionality is provided for navigating through multiple pages of services.
+    - This file manages the display of services under a specific sub-category.
+    - It fetches data from the backend using GET APIs and renders services as cards.
+    - Users can filter services by rating, budget, and popularity using this component.
+    - Pagination functionality is provided for navigating through multiple pages of services.
 
-**SubPagination.js**
+4. **src\Features\SubPagination\SubPagination.js**
 
-- This file contains the pagination controls for navigating through pages of services.
-- It integrates with Material UI components for consistent styling and functionality.
-- SubPagination enhances user experience by providing intuitive navigation options for browsing through large sets of services.
+    - This file contains the pagination controls for navigating through pages of services.
+    - It integrates with Material UI components for consistent styling and functionality.
+    - SubPagination enhances user experience by providing intuitive navigation options for browsing through large sets of services.
 
-**InfoCard.js**
+5. **src\Features\SubServiceCard\InfoCard\InfoCard.js**
 
-- This component displays information about a service provider.
-- It receives props containing information about the service provider.
-- The component renders the provider's profile picture, name, job title, description, rating, and price.
-- It includes conditional rendering for displaying a 'Popular' tag based on the provider's rating.
+    - This component displays information about a service provider.
+    - It receives props containing information about the service provider.
+    - The component renders the provider's profile picture, name, job title, description, rating, and price.
+    - It includes conditional rendering for displaying a 'Popular' tag based on the provider's rating.
 
-**SubServiceCard.js**
+6. **src\Features\SubServiceCard\SubServiceCard.js**
 
-- This file defines a card layout for displaying services under a sub-category.
-- It utilizes Material UI components for styling and layout.
-- The card layout includes an image, heart icon for wishlist functionality, and information about the service provider.
-- SubServiceCard component fetches data from the backend and renders each service as a card.
-- Users can add or remove services from their wishlist using the heart icon.
-- Implemented in React, it has corresponding `.js` and `.css` files.
+    - This file defines a card layout for displaying services under a sub-category.
+    - It utilizes Material UI components for styling and layout.
+    - The card layout includes an image, heart icon for wishlist functionality, and information about the service provider.
+    - SubServiceCard component fetches data from the backend and renders each service as a card.
+    - Users can add or remove services from their wishlist using the heart icon.
+    - Implemented in React, it has corresponding `.js` and `.css` files.
 
 
-Backend:
+**Backend:**
 
 Here, I have created GET APIs on backend. 
 For this, first I have created routes in services.routes.js. And then, the controller will be called where main logic is implemented. Data is being fetched from the MongoDB database.
 
 **Code Description:**
 
-**services.routes.js**
+1. **src\routes\v1\services.routes.js**
 
-- This file defines Express router configurations for managing routes related to services.
-- It imports controller functions from `services.controller.js` to handle HTTP requests.
-- Routes are established for various operations related to services, including GET requests.
-- These routes will be used to create GET APIs for retrieving data from the backend.
+    - This file defines Express router configurations for managing routes related to services.
+    - It imports controller functions from `services.controller.js` to handle HTTP requests.
+    - Routes are established for various operations related to services, including GET requests.
+    - These routes will be used to create GET APIs for retrieving data from the backend.
 
-**services.controller.js**
+2. **src\controllers\services.controller.js**
 
-- This file contains controller functions for handling requests related to services.
-- It implements the main logic for processing GET requests and fetching data from the MongoDB database.
-- The controller functions are responsible for responding to the routes defined in `services.routes.js`.
-- Data retrieval operations are executed here, providing responses to the client based on the requested data.
+    - This file contains controller functions for handling requests related to services.
+    - It implements the main logic for processing GET requests and fetching data from the MongoDB database.
+    - The controller functions are responsible for responding to the routes defined in `services.routes.js`.
+    - Data retrieval operations are executed here, providing responses to the client based on the requested data.
 
 ### Search Feature (Deployed and Working)
 URL: https://quick-hire.netlify.app
@@ -116,34 +116,34 @@ For search faeture, I have implemented an search bar at the navbar. User can typ
 User can select any item from the dropdown and they will be redirected to the individual service page.
 
 #### Code Structure and Files
-Frontend:
+**Frontend:**
 
 For search bar, I have created searchBar Component. Here, I have three main .js files: SearchBar, SearchResultList and SearchResult. SearchBar handles the input in which user will type. SearchResultList renders SearchResult and list all searches. 
 
 **Code Description:**
 
-**SearchBar.js**
+1. **src\CommonComponents\Navbar\searchComponents\SearchBar.js**
 
-- Manages user input for searching.
-- Utilizes debounce technique to delay API requests.
-- Fetches data from the backend API and filters results.
-- Displays a search input field with a search icon.
+    - Manages user input for searching.
+    - Utilizes debounce technique to delay API requests.
+    - Fetches data from the backend API and filters results.
+    - Displays a search input field with a search icon.
 
-**SearchResult.js**
+2. **src\CommonComponents\Navbar\searchComponents\SearchResult.js**
 
-- Represents an individual search result item.
-- Redirects users to the details page of the selected service upon clicking.
-- Displays the title of the service as a clickable div.
+    - Represents an individual search result item.
+    - Redirects users to the details page of the selected service upon clicking.
+    - Displays the title of the service as a clickable div.
 
-**SearchResultList.js**
+3. **src\CommonComponents\Navbar\searchComponents\SearchResultsList.js**
 
-- Renders a list of search results.
-- Manages visibility of the search results list.
-- Handles clicks outside the search results list to close it.
-- Ensures visibility of the search results list when new results are received.
+    - Renders a list of search results.
+    - Manages visibility of the search results list.
+    - Handles clicks outside the search results list to close it.
+    - Ensures visibility of the search results list when new results are received.
 
 
-Backend:
+**Backend:**
 
 I have created an API for search feature. Whenever types in frontend, it will fire a query from the using debounce technique. Backend will map the keyword with the Service title and description. If it matches, then it will return the array and frontend will show.
 
@@ -154,18 +154,18 @@ Here, services.routes.js is the route file, and services.controller.js is the co
 
 **Code Description:**
 
-**services.controller.js**
+1. **src\controllers\services.controller.js**
 
-- This file contains controller functions specifically related to searching services.
-- The primary function included is:
-  - `getServicesByPartialHint`: Retrieves services that match a partial hint provided in the query, responding with the matching services or an internal server error.
+    - This file contains controller functions specifically related to searching services.
+    - The primary function included is:
+    - `getServicesByPartialHint`: Retrieves services that match a partial hint provided in the query, responding with the matching services or an internal server error.
 
-**services.routes.js**
+2. **src\routes\v1\services.routes.js**
 
-- This file contains Express router configurations specifically for managing routes related to searching services.
-- It imports the `getServicesByPartialHint` controller function from `services.controller.js` to handle search requests.
-- A single route is defined for searching services by partial hint.
-- The route is mapped to the `getServicesByPartialHint` controller function to handle the search request.
+    - This file contains Express router configurations specifically for managing routes related to searching services.
+    - It imports the `getServicesByPartialHint` controller function from `services.controller.js` to handle search requests.
+    - A single route is defined for searching services by partial hint.
+    - The route is mapped to the `getServicesByPartialHint` controller function to handle the search request.
 
 
 ## Related Features
