@@ -6,6 +6,42 @@
 
 [https://git.cs.dal.ca/gupta2/csci_5709_grp-04/-/tree/parth-modi?ref_type=heads](https://git.cs.dal.ca/gupta2/csci_5709_grp-04/-/tree/parth-modi?ref_type=heads)
 
+## Group Members
+
+- _Angel Christian_
+- _Hiteshkumar Gupta_
+- _Parth Modi_
+- _Rahul Hambarde_
+- _Tijil Parmar_
+- _Yash Khorja_
+
+## Features Developed
+
+- _Checkout feature and Stripe Integration_
+- _Register user as a Freelancer_
+
+## Technologies/Frameworks Used
+
+### Front-end
+
+- _React_
+- _Material UI_
+
+### Back-end
+
+- _Node_
+- _Express_
+
+## W3C Compliance
+
+- This assignment follws the W3C compliance standards.
+
+## Folder Structure
+
+- Code is organized in two folders: Backend and Frontend
+- Frontend code follows the React folder structure.
+- Backend code follows the Express backend structure like Models, Controllers and Routes.
+
 ## Personal Feature 1: Checkout screen and Stripe Integration
 
 #### URLs:
@@ -51,110 +87,26 @@ _For ease of testing the functionality, please use the following account credent
 - **Cart Model (`cart.model.js`):**  
   [csci_5709_grp-04\Backend\src\models\cart.model.js](https://git.cs.dal.ca/gupta2/csci_5709_grp-04/-/blob/main/Backend/src/models/cart.model.js?ref_type=heads)
 
-- **Cart APIs Endpoint:**  
-  **Domain:** [https://quickhire-backend-1.onrender.com/api/v1/](https://quickhire-backend-1.onrender.com/api/v1/)
-  
-  - **Add Service to Cart:**
-    - **Method:** POST
-    - **Endpoint:** /cart/add/
-    - **Payload:**
-      ```json
-      {
-        "userId": "660da06d82f1d2214ebe9798", // this is the user of the given user account
-        "serviceId": "65fe53d82c89d2a6dbbb3828"
-      }
-      ```
-    - **Response:**
-      ```json
-      {
-          "_id": "660de136446294422f57c402", 
-          "userId": "660da06d82f1d2214ebe9798",
-          "services": [
-              "65fd2ac82c89d2a6dbbb37fd",
-              "65fe53d82c89d2a6dbbb3828"
-          ],
-          "totalPrice": 71,
-          "__v": 5
-      }
-      ```
-  
-  - **Remove Service from Cart:**
-    - **Method:** POST
-    - **Endpoint:** /cart/remove
-    - **Payload:**
-      ```json
-      {
-        "userId": "660423ed59de39016941dcd2",
-        "serviceId": "65fe53a22c89d2a6dbbb381b"
-      }
-      ```
-    - **Response:**
-      ```json
-      {
-          "_id": "660de136446294422f57c402",
-          "userId": "660da06d82f1d2214ebe9798",
-          "services": [
-              "65fd2ac82c89d2a6dbbb37fd"
-          ],
-          "totalPrice": 38,
-          "__v": 6
-      }
-      ```
-  
-  - **Get User Cart:**
-    - **Method:** GET
-    - **Endpoint:** /cart/{userId}
-    - **Sample Response:**
-      ```json
-      {
-          "_id": "660de136446294422f57c402",
-          "userId": "660da06d82f1d2214ebe9798",
-          "services": [
-              {
-                  "_id": "65fd2ac82c89d2a6dbbb37fd",
-                  "sellerName": "Gewn Tennyson",
-                  "title": "Advanced iOS App Development Services",
-                  "description": "Gewn Tennyson is an experienced iOS developer known for her problem-solving skills and dedication to delivering top-notch solutions. Her proficiency in Swift and extensive knowledge of iOS frameworks allow her to develop robust and scalable applications. Gwen's commitment to excellence and ability to adapt to new technologies make her a valuable asset in any iOS development project.",
-                  "category": "Programming",
-                  "subCategory": "Mobile App Development",
-                  "jobTitle": "iOS App Developer (Mobile)",
-                  "price": 38,
-                  "isActive": true,
-                  "sellerId": "660d9af2070aa7711e0311f6",
-                  "imgUrl": "https://img.freepik.com/free-vector/mobile-app-development-isometric-background-with-composition-smartphone-screens-with-3d-app-icons-connections-vector-illustration_1284-77301.jpg?t=st=1711074754~exp=1711078354~hmac=d7a10c78fbfb2e0278064a532d4f414cb56e259636f08ba7bfb61a0c473b8e7c&w=1480",
-                  "createdDate": "2024-03-22T06:52:56.189Z",
-                  "updatedDate": "2024-03-22T06:52:56.189Z",
-                  "currentRating": 4.1,
-                  "isPopular": false,
-                  "numberOfRatings": 147
-              }
-          ],
-          "totalPrice": 38,
-          "__v": 0
-      }
-      ```
-
 #### Screenshots:
 
 _Empty Cart Screen:_
 
-![Empty Cart Screen](./public/screenshots/EmptyCartScreen.jpeg)
+![Empty Cart Screen](https://lh3.googleusercontent.com/drive-viewer/AKGpihYq7JUmfKxou3PQgwCX8k5294IJHRfmX8xjjl8YeaUfa9wfYsqVJsIe2F4TySc-K-jbf8AJ6OwTmGpzaTvOpkhENmWky5bXl4o=w1370-h943-rw-v1)
 
 _Service added to Cart:_
-
-![Service added to Cart](./public/screenshots/CartScreen.jpeg)
+![Service added to Cart](https://lh3.googleusercontent.com/drive-viewer/AKGpihbizeQB7Aq4h7STEzjogHMMqu_cxgvecrZLg7LeGXxYBrvrVpjerO-DPFjV7H4UOSEntOUNaZWdgnYsFU0e1VIh0nsegHvJjg=w1910-h943-rw-v1)
 
 _Payment gateway screen (Stripe):_
 
-![Payment gateway screen (Stripe)](./public/screenshots/StripeIntegration.jpeg)
+![Payment gateway screen (Stripe)](https://lh3.googleusercontent.com/drive-viewer/AKGpihYK20AXA5oqYrghsw9jmEARMSpSkrdwIubZGJ9Zf0hNViHSjEYKtHyLEDLW8BLVO8ndB3nBQV8SEV_lRs14JcfxJhbn1Gcgwg=w1910-h943-rw-v1)
 
 _Payment Success Screen:_
 
-![Payment Success](./public/screenshots/PaymentSuccessScreen.jpeg)
+![Payment Success](https://lh3.googleusercontent.com/drive-viewer/AKGpihaK9yG9VWjVA8JxEtpkY5cxVXwkitW7gmqPdCmSUSP6b4jAwK0bsKfHXmN_t_q3bPFRfF_nP6JW3Ylrw0X-j3w0-Je52GS-Ew=w1370-h943-rw-v1)
 
 _Payment Failure Screen:_
 
-![Payment Failure](./public/screenshots/PaymentFailureScreen.jpeg)
+![Payment Failure](https://lh3.googleusercontent.com/drive-viewer/AKGpihaqAMcNP4HZKKHDbjWYMM4EJC0Mv9SJ2xmtWqMXQ9dlwdJ2fU0MAX71_0kGxMtMQkU7lZJlZFKgi8pPaikTaRPC599UiG-pllI=w1370-h943-rw-v1)
 
 ## Personal Feature 2: Register user as a Freelancer
 
@@ -189,4 +141,12 @@ _Once logged in, please go to profile page and click on "BECOME A FREELANCER" bu
 
 _Freelancer Registration Screen:_
 
-![_Freelancer Registration Screen](./public/screenshots/FreelancerRegistration.jpeg)
+![_Freelancer Registration Screen](https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihYqh_1T1sXqOWISNE8VbswT3YCIuxDOLcX_dejTVY5eBF9GQuTm_ZJeSQvx7JHOA9yNzE9mKrqMdJKI-qXUwXiLcIqir32DHXU=w1860-h943-rw-v1)
+
+## References
+
+[1] Material UI. "Overview." [Online]. Available: [https://mui.com/material-ui/getting-started/](https://mui.com/material-ui/getting-started/) Accessed February 21, 2024.
+
+[2] Payments, "stripe docs", [Online]. Available: [https://docs.stripe.com/payments](https://docs.stripe.com/payments), Accessed: February 28, 2024.
+
+[3] 4.x API, "ExpressJS", [Online]. Available: [https://expressjs.com/en/api.html](https://expressjs.com/en/api.html), Accessed: February 23, 2024.
