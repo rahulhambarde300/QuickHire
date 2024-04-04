@@ -51,6 +51,89 @@ _For ease of testing the functionality, please use the following account credent
 - **Cart Model (`cart.model.js`):**  
   [csci_5709_grp-04\Backend\src\models\cart.model.js](https://git.cs.dal.ca/gupta2/csci_5709_grp-04/-/blob/main/Backend/src/models/cart.model.js?ref_type=heads)
 
+- **Cart APIs Endpoint:**  
+  **Domain:** [https://quickhire-backend-1.onrender.com/api/v1/](https://quickhire-backend-1.onrender.com/api/v1/)
+  
+  - **Add Service to Cart:**
+    - **Method:** POST
+    - **Endpoint:** /cart/add/
+    - **Payload:**
+      ```json
+      {
+        "userId": "660da06d82f1d2214ebe9798", // this is the user of the given user account
+        "serviceId": "65fe53d82c89d2a6dbbb3828"
+      }
+      ```
+    - **Response:**
+      ```json
+      {
+          "_id": "660de136446294422f57c402", 
+          "userId": "660da06d82f1d2214ebe9798",
+          "services": [
+              "65fd2ac82c89d2a6dbbb37fd",
+              "65fe53d82c89d2a6dbbb3828"
+          ],
+          "totalPrice": 71,
+          "__v": 5
+      }
+      ```
+  
+  - **Remove Service from Cart:**
+    - **Method:** POST
+    - **Endpoint:** /cart/remove
+    - **Payload:**
+      ```json
+      {
+        "userId": "660423ed59de39016941dcd2",
+        "serviceId": "65fe53a22c89d2a6dbbb381b"
+      }
+      ```
+    - **Response:**
+      ```json
+      {
+          "_id": "660de136446294422f57c402",
+          "userId": "660da06d82f1d2214ebe9798",
+          "services": [
+              "65fd2ac82c89d2a6dbbb37fd"
+          ],
+          "totalPrice": 38,
+          "__v": 6
+      }
+      ```
+  
+  - **Get User Cart:**
+    - **Method:** GET
+    - **Endpoint:** /cart/{userId}
+    - **Sample Response:**
+      ```json
+      {
+          "_id": "660de136446294422f57c402",
+          "userId": "660da06d82f1d2214ebe9798",
+          "services": [
+              {
+                  "_id": "65fd2ac82c89d2a6dbbb37fd",
+                  "sellerName": "Gewn Tennyson",
+                  "title": "Advanced iOS App Development Services",
+                  "description": "Gewn Tennyson is an experienced iOS developer known for her problem-solving skills and dedication to delivering top-notch solutions. Her proficiency in Swift and extensive knowledge of iOS frameworks allow her to develop robust and scalable applications. Gwen's commitment to excellence and ability to adapt to new technologies make her a valuable asset in any iOS development project.",
+                  "category": "Programming",
+                  "subCategory": "Mobile App Development",
+                  "jobTitle": "iOS App Developer (Mobile)",
+                  "price": 38,
+                  "isActive": true,
+                  "sellerId": "660d9af2070aa7711e0311f6",
+                  "imgUrl": "https://img.freepik.com/free-vector/mobile-app-development-isometric-background-with-composition-smartphone-screens-with-3d-app-icons-connections-vector-illustration_1284-77301.jpg?t=st=1711074754~exp=1711078354~hmac=d7a10c78fbfb2e0278064a532d4f414cb56e259636f08ba7bfb61a0c473b8e7c&w=1480",
+                  "createdDate": "2024-03-22T06:52:56.189Z",
+                  "updatedDate": "2024-03-22T06:52:56.189Z",
+                  "currentRating": 4.1,
+                  "isPopular": false,
+                  "numberOfRatings": 147
+              }
+          ],
+          "totalPrice": 38,
+          "__v": 0
+      }
+      ```
+
 #### Screenshots:
 
 _Empty Cart Screen:_
