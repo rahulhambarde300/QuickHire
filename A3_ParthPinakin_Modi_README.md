@@ -91,7 +91,7 @@ _For ease of testing the functionality, please use the following account credent
 
 _Empty Cart Screen:_
 
-![Empty Cart Screen](https://lh3.googleusercontent.com/drive-viewer/AKGpihYq7JUmfKxou3PQgwCX8k5294IJHRfmX8xjjl8YeaUfa9wfYsqVJsIe2F4TySc-K-jbf8AJ6OwTmGpzaTvOpkhENmWky5bXl4o=w1370-h943-rw-v1)
+![Empty Cart Screen](https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihaBSEUSTrNYOviS9xy8iaEaUd10wy3_THocDp8X5dMjDomUBOOIN_UEhYO7EAzpC-ZYESgzH1P8gFduzH1HA0tbZ2JAFqczqJs=w1860-h943-rw-v1)
 
 _Service added to Cart:_
 ![Service added to Cart](https://lh3.googleusercontent.com/drive-viewer/AKGpihY984AZ-JNJ0VjFi4eR1ayYxr1c7TUChynIXm6As8vvl_qV9c4Szs4NCaB73pt0zwDqn5lUMFGI-BZ7MqG6Xd_VhSg_neRrQ_U=w1910-h943-rw-v1)

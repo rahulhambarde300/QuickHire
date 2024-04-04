@@ -1,32 +1,10 @@
 /**
- * Authors: Rahul Hambarde, Parth Modi
+ * @authors 
+ * Rahul Hambarde,  Parth Modi
  */
-
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
-/**
- * User Schema for MongoDB.
- *
- * @typedef {Object} UserSchema
- * @property {string} username - The unique username of the user.
- * @property {string} first_name - The first name of the user.
- * @property {string} last_name - The last name of the user.
- * @property {string} description - The description of the user.
- * @property {string} mobile - The mobile number of the user.
- * @property {string} email - The unique email address of the user.
- * @property {string} address - The address of the user.
- * @property {string} password - The hashed password of the user.
- * @property {string} profilePictureUrl - The URL to the user's profile picture.
- * @property {string} linkedInLink - The LinkedIn profile link of the user.
- * @property {string} instagramLink - The Instagram profile link of the user.
- * @property {string} facebookLink - The Facebook profile link of the user.
- * @property {boolean} isFreelancer - Indicates if the user is a freelancer.
- * @property {string} occupation - The occupation of the user.
- * @property {Array} skills - The skills of the user.
- * @property {string} experience - The experience of the user.
- * @property {Array} education - The education details of the user.
- */
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
