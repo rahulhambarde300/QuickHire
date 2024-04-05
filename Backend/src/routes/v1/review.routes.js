@@ -10,7 +10,7 @@ import {
 
 const router = express.Router();
 
-router.get("/", getReviewsByServiceID);
+router.get("/:id", getReviewsByServiceID);
 router.post("/", addReview);
 
 export default router;

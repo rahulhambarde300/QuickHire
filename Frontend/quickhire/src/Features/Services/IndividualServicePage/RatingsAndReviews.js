@@ -4,7 +4,7 @@
  * @returns {JSX.Element} - The rendered JSX element.
  */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   Box,
@@ -14,35 +14,8 @@ import {
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import { makeStyles } from "@material-ui/core/styles";
-
-/**
-   *I have dependency on Reviews feature and currently it is not ready
-   so adding static data
-  */
-
-const ratingsAndReviews = [
-  {
-    user: "User1",
-    avatar: "https://via.placeholder.com/150",
-    rating: 4,
-    review: "Great service, very satisfied!",
-    timestamp: "2 days ago",
-  },
-  {
-    user: "User2",
-    avatar: "https://via.placeholder.com/150",
-    rating: 5,
-    review: "Excellent experience, highly recommended!",
-    timestamp: "5 days ago",
-  },
-  {
-    user: "User3",
-    avatar: "https://via.placeholder.com/150",
-    rating: 3,
-    review: "Good service, could be improved.",
-    timestamp: "1 week ago",
-  },
-];
+import { useParams } from "react-router-dom/cjs/react-router-dom";
+import { CONFIG } from "../../../config";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -60,15 +33,29 @@ const useStyles = makeStyles((theme) => ({
 const RatingsAndReviews = () => {
   const classes = useStyles();
   const [selectedRating, setSelectedRating] = useState(null);
+  const [ratingsAndReviews, setRatingsAndReviews] = useState([]);
+  const [hasReviews, setHasReviews] = useState(false);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getReviewsForService = async () => {
+      const response = await fetch(`${CONFIG.BASE_PATH}rating/${id}`);
+      const responseData = await response.json();
+      const hasUser = responseData.some((res) => res.user);
+      setHasReviews(hasUser);
+      setRatingsAndReviews(responseData);
+    };
+    getReviewsForService();
+  }, [id]);
 
   const calculateAverageRating = (ratingsAndReviews) => {
-    if (ratingsAndReviews.length === 0) return 0;
+    if (ratingsAndReviews?.length === 0) return 0;
 
     const totalRating = ratingsAndReviews.reduce(
       (acc, curr) => acc + curr.rating,
       0
     );
-    return totalRating / ratingsAndReviews.length;
+    return totalRating / ratingsAndReviews?.length;
   };
 
   const handleRatingFilter = (rating) => {
@@ -76,8 +63,26 @@ const RatingsAndReviews = () => {
   };
 
   const countReviewsByRating = (rating) => {
-    return ratingsAndReviews.filter((item) => item.rating === rating).length;
+    return ratingsAndReviews.filter((item) => item?.rating === rating).length;
   };
+
+  if (ratingsAndReviews.length === 0) {
+    return (
+      <div style={{ marginTop: "2rem" }}>
+        <Box mb={2}>
+          <Typography variant="h6">Reviews for this Service</Typography>
+          <div style={{ display: "flex" }}>
+            <Rating
+              name="service-rating"
+              value={calculateAverageRating(ratingsAndReviews)}
+              readOnly
+            />
+            <Typography>(0)</Typography>
+          </div>
+        </Box>
+      </div>
+    );
+  }
 
   return (
     <div style={{ marginTop: "2rem" }}>
@@ -89,7 +94,7 @@ const RatingsAndReviews = () => {
             value={calculateAverageRating(ratingsAndReviews)}
             readOnly
           />
-          <Typography>(3)</Typography>
+          <Typography>({ratingsAndReviews?.length})</Typography>
         </div>
       </Box>
 
@@ -115,30 +120,43 @@ const RatingsAndReviews = () => {
       ))}
 
       <Divider style={{ marginBottom: "1rem" }} />
-      {ratingsAndReviews
-        .filter((item) =>
-          selectedRating ? item.rating === selectedRating : true
-        )
-        .map((item, index) => (
-          <>
-            <Box display="flex" alignItems="start" flexWrap="wrap" mb={1}>
-              <Avatar
-                className={classes.avatar}
-                src={item.avatar}
-                alt={item.user}
-              />
-              <div>
-                <Typography>{item.user}</Typography>
-                <Rating name={`rating-${index}`} value={item.rating} readOnly />
-                <Typography variant="body1">{item.review}</Typography>
-              </div>
-              <Box flexGrow={1} textAlign="right">
-                <Typography variant="caption">{item.timestamp}</Typography>
-              </Box>
-            </Box>
-            <Divider style={{ margin: "1rem 0" }} />
-          </>
-        ))}
+      {hasReviews ? (
+        ratingsAndReviews
+          .filter((item) =>
+            selectedRating ? item?.rating === selectedRating : true
+          )
+          .map(
+            (item, index) =>
+              item?.user && (
+                <>
+                  <Box display="flex" alignItems="start" flexWrap="wrap" mb={1}>
+                    <Avatar
+                      className={classes.avatar}
+                      src={item?.user?.[0]?.profilePictureUrl}
+                      alt={item?.user?.[0]?.username}
+                    />
+                    <div>
+                      <Typography>{item?.user?.[0]?.username}</Typography>
+                      <Rating
+                        name={`rating-${index}`}
+                        value={item?.rating}
+                        readOnly
+                      />
+                      <Typography variant="body1">{item?.review}</Typography>
+                    </div>
+                    <Box flexGrow={1} textAlign="right">
+                      <Typography variant="caption">
+                        {new Date(item?.createdAt).toLocaleDateString()}
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Divider style={{ margin: "1rem 0" }} />
+                </>
+              )
+          )
+      ) : (
+        <Typography variant="h6">No Reviews for this Service yet!</Typography>
+      )}
     </div>
   );
 };

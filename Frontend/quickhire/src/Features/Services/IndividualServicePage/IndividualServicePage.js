@@ -317,6 +317,7 @@ const IndividualServicePage = ({ user, onload }) => {
                 </div>
               </Paper>
             </div>
+            <RatingsAndReviews />
           </Grid>
 
           {/* Checkout option for large screens */}
